@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Lista de productos</p>
+    <div id="app"></div>
+    <br />
+    <hr />
+    <p>Lista de tareas</p>
+    <div id="app-two"></div>
+    <script>
+      const app = document.getElementById("app");
+      const products = [
+        { title: "hamburgesa", price: 80 },
+        { title: "pan", price: 100 },
+        { title: "mantequilla", price: 50 },
+        { title: "mayonesa", price: 70 },
+      ];
+      const list = products.map((element) => {
+        return `<li>${element.title} - $${element.price}</li>`;
+      });
+      app.innerHTML = list.join('');
+      console.log(list);
+
+      const appTwo = document.getElementById("app-two");
+      const toDos = [
+        { id: 1, toDo: "Estudiar", completed: true },
+        { id: 2, toDo: "Dibujar", completed: true },
+        { id: 3, toDo: "hacer ejercicio", completed: true },
+      ];
+
+      toDos.forEach((el) => {
+        const checkTodo = document.createElement("p");
+        checkTodo.innerHTML = `<li> ${el.toDo}<input type= 'checkbox' ${
+          el.completed ? "checked" : ""
+        } name = ${el.toDo} id = ${el.id}></li>`;
+
+        appTwo.appendChild(checkTodo);
+      });
+    </script>
+  </body>
+</html>
